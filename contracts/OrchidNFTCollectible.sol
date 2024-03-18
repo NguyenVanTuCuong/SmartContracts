@@ -13,6 +13,7 @@ contract OrchidNFTCollectible is ERC721, Ownable {
     function mint(address to, string memory tokenURI) external onlyOwner {
         _mint(to, tokenIdNext);
         _tokenURIs[tokenIdNext] = tokenURI;
+        tokenIdNext++;
     }
 
     function burn(uint256 tokenId) external onlyOwner {
