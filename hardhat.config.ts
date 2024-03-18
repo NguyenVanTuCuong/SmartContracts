@@ -8,7 +8,7 @@ const config: HardhatUserConfig = {
         url: "https://api.baobab.klaytn.net:8651",
         chainId: 1001,
         accounts: {
-            mnemonic: "cradle lounge fall undo sound ivory earn shy whisper clump craft alarm",
+            mnemonic: "alcohol million debate often spare merit acid motor around ranch indicate summer",
         },
     },
 },
