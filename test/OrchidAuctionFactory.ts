@@ -23,3 +23,4 @@ describe("OrchidAuctionFactory", () => {
     expect(await auctionContract._initialAmount()).to.be.eq("1000000000000000000")
   });
 });
+ 

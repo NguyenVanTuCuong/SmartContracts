@@ -21,6 +21,28 @@ contract OrchidAuctionFactory is Ownable {
         _orchidNFTCollectible = orchidNFTCollectible;
     }
 
+    function getAllOwnedAuctionContracts(address owner) external view returns (address[] memory addresses) {
+        addresses = new address[](auctionContracts.length);
+        uint256 count = 0;
+        for (uint256 i = 0; i < auctionContracts.length; i ++) {
+              if (OrchidAuction(auctionContracts[i]).owner() == owner) {
+                addresses[count] = address(auctionContracts[i]);
+                count++;
+            }
+        }
+
+        assembly {
+            mstore(addresses, count)
+        }
+    }
+
+     function getAllAuctionContracts() external view returns (address[] memory addresses) {
+         addresses = new address[](auctionContracts.length);
+         for (uint256 i = 0; i < auctionContracts.length; i ++) {
+                addresses[i] = address(auctionContracts[i]);
+        }
+    }
+
     function collectProtocol() onlyOwner() external payable returns (uint256 protocolFee) {  
         (bool success, ) = owner().call{value: _protocolFee}("");
         require(success);

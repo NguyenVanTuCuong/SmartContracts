@@ -32,6 +32,10 @@ contract OrchidAuction is Ownable, IERC721Receiver {
         return _bids[_bids.length - 1];
     }
 
+     function getAllBids() external view returns (Bid[] memory) {
+        return _bids;
+    }
+
     function onERC721Received(
         address,
         address,
@@ -91,7 +95,7 @@ contract OrchidAuction is Ownable, IERC721Receiver {
     }
 
     //creator can end any
-    function endAuction() public payable mustAfterADay {
+    function endAuction() public payable {
         _isTerminated = true;
         Bid memory lastBid = _lastBid();
         OrchidNFTCollectible(_orchidNFTCollectible).safeTransferFrom(

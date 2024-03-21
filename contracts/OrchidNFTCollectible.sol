@@ -5,8 +5,8 @@ import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 contract OrchidNFTCollectible is ERC721, Ownable {
-    mapping(uint256 => string) private _tokenURIs;
-    uint256 private tokenIdNext;
+    mapping(uint256 => string) public _tokenURIs;
+    uint256 public tokenIdNext;
 
     constructor() Ownable(_msgSender()) ERC721("Orchid Collectible", "ORC") {}
 
